@@ -43,6 +43,8 @@ app.post('/api/notes', function(req, res) {
 });
 
 
+//Route that writes note
+
 const noteWrite = function(data) {
   const jsonPath = path.join(__dirname, "/db.json")
   fs.writeFile(jsonPath, JSON.stringify(data), (err) => {
@@ -50,13 +52,17 @@ const noteWrite = function(data) {
       });
 };
 
+//Route that deletes
+
 app.delete('/api/notes/:id', function(req,res) {
   const noteJson = noteRead();
   const result = noteJson.filter(note => note.id != req.params.id)
-  writeData(result)
+  noteWrite(result)
   res.json(result)
 });
 
+
+//Reading notes
 const noteRead = function() {
   const notePath = path.join(__dirname, "/db.json")
   const json = JSON.parse(fs.readFileSync(notePath))
@@ -69,14 +75,17 @@ app.get("/notes", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/notes.html"));
   });
 
+  //Route to index page
 app.get("/index", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"));
   });
 
+  //Wildcard route that will take back to index
  app.get("*", function(req, res) {
     res.sendFile(path.join(__dirname, "/public/index.html"));
   });
 
+  //Server listener
 app.listen(PORT,function(){
     console.log("listenin on port " +PORT)
 })
