@@ -24,11 +24,13 @@ This in an application that is build using express servers that lets you save no
 
 
 ### 2. Installation {#installation}
-You will need to clone the repo and install the necessary dependencies.
+You will need to clone the reposity and install the necessary dependencies. To do this, open the code once it is cloned and run the command npm i or npm install. This wall install the necessary dependicies for the application. Once all dependencies are installed you will have to start a local server since this application is being hosted.
+
+You can see how it should run/appear by clicking the deployed application link below. It is deployed on Heroku and you can demo how it works.
 
 
 ### 3. Usage {#usage}
-This app is used to create notes that you can save, delete, and recall.
+This app is used to create notes that you can save, delete, and recall as needed. Think of is as digital post it notes!
 
 
 
